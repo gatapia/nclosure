@@ -1,4 +1,4 @@
-#!/usr/local/bin/node
+#!/usr/bin/env node
 
 /**
  * @fileoverview This file runs fixjsstyle and gjslint on a directory
