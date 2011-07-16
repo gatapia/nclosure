@@ -255,7 +255,7 @@ nclosure.nccompile.prototype.runCommand_ = function(clArgs, command,
   exec += ' ' + clArgs.join(' ');
   var that = this;
   if (this.verbose_) console.error(exec.replace(/ --/g, '\n  --'));
-  require('child_process').exec(exec, [],
+  require('child_process').exec(exec, {maxBuffer: 1024 * 1024},
       function(err, stdout, stderr) {
     if (that.verbose_) console.error('Command completed');
     if (err) {
