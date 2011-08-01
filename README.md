@@ -233,7 +233,7 @@ give you a good introduction to what can be acchieved with the tool.
 If you have any questions, issues, complaints, suggestions, .... just email me
 (guido@tapia.com.au) and I'll see what I can do to help.
 
-## Kown Limitations
+## Known Limitations
 
 Since the Node.js core libs are not jsdoc'ed in any way I could not give any
 type safety when using these core libs.
