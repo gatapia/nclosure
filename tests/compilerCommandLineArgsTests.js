@@ -25,8 +25,8 @@ function setUp() { clearDepsAndCompiledFile(); };
 function tearDownPage() { clearDepsAndCompiledFile(); };
 
 function clearDepsAndCompiledFile() {
-  if (path.existsSync(deps)) { fs.unlinkSync(deps); }
-  if (path.existsSync(min)) { fs.unlinkSync(min); }
+  if (fs.existsSync(deps)) { fs.unlinkSync(deps); }
+  if (fs.existsSync(min)) { fs.unlinkSync(min); }
 };
 
 function testCompileWithNoArgs() {
@@ -72,11 +72,11 @@ function assertFilesExist(cmd, compiledMinFile, depsFile) {
   assertEquals('CMD[' + cmd + '] Expected the compiled min file [' +
     min + '] to[' +
     (compiledMinFile ? 'exist' : 'not exist') + ']',
-    compiledMinFile, path.existsSync(min));
+    compiledMinFile, fs.existsSync(min));
   assertEquals('CMD[' + cmd + '] Expected the deps file [' +
     deps + '] to[' +
     (depsFile ? 'exist' : 'not exist') + ']',
-    depsFile, path.existsSync(deps));
+    depsFile, fs.existsSync(deps));
   asyncTestCase.continueTesting();
 };
 
