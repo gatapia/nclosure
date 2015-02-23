@@ -9,7 +9,7 @@ var ng_ = require('nclosure').nclosure();
 
 goog.require('goog.testing.jsunit');
 
-goog.require('nclosure.tests');
+goog.require('nclosure.tests.utils');
 
 var fs_ = require('fs');
 
@@ -25,7 +25,7 @@ var start = Date.now();
 function setUpPage() {
   // TODO: This assumes the nctest command is running in
   // the nclosure directory.
-  allTestFiles = nclosure.tests.readDirRecursiveSync
+  allTestFiles = nclosure.tests.utils.readDirRecursiveSync
     ('third_party/closure-library/closure/goog/', '_test[\d\w_]*\.(html|js)');
   if (maxTests > 0 && maxTests < allTestFiles.length)
      allTestFiles = allTestFiles.slice(0, maxTests);
@@ -55,7 +55,7 @@ function testClousreTests() {
 
     var commands = goog.array.map(allFilesInTmp,
       function(f) { return 'nctest ' + ng_.getPath(tmpdir, f); });
-    nclosure.tests.paralleliseExecs(
+    nclosure.tests.utils.paralleliseExecs(
       commands,runTestCallback_, onCompleted_, maxParallels);
   });
 };
@@ -66,8 +66,8 @@ function copyAndParseAllTestFiles(oncomplete) {
     if (err) return oncomplete(err);
     copyAndParseAllTestFilesImpl(oncomplete)
   };
-  if (fs_.existsSync(tmpdir)) {
-    nclosure.tests.rmRfDir(tmpdir, function(err) {
+  if (path_.existsSync(tmpdir)) {
+    nclosure.tests.utils.rmRfDir(tmpdir, function(err) {
       if (err) return oncomplete(err);
       fs_.mkdir(tmpdir, 0777, impl);
     });
