@@ -97,7 +97,7 @@ nclosure.NodeTestsRunner.prototype.runNextTestImpl_ = function(file) {
   cmd.stdout.on('data', ondata);
   cmd.on('exit', function(code) {    
     var report = '';
-    if (require('path').existsSync(reportFile)) {
+    if (require('fs').existsSync(reportFile)) {
       report = fs.readFileSync(reportFile).toString();
       fs.unlinkSync(reportFile);
     }

@@ -202,10 +202,10 @@ nclosure.nccompile.prototype.runCompilation_ = function() {
  */
 nclosure.nccompile.prototype.onExit_ =
     function(err) {
-  if (require('path').existsSync(this.tmpFileName_)) {
+  if (require('fs').existsSync(this.tmpFileName_)) {
     require('fs').unlinkSync(this.tmpFileName_);
   }
-  if (require('path').existsSync(this.fileToCompileIgnore_)) {
+  if (require('fs').existsSync(this.fileToCompileIgnore_)) {
     require('fs').renameSync(this.fileToCompileIgnore_, this.fileToCompile_);
   }
   if (err) { console.error(err.stack); }
