@@ -8,7 +8,6 @@
 var ng_ = require('nclosure').nclosure();
 
 var fs_ = require('fs');
-var path_ = require('path');
 var testDir;
 var googDoc;
 
@@ -57,7 +56,7 @@ function assertClassInIndex(files) {
 };
 
 function writeOutFile(file, contents) {
-  if (!path_.existsSync(testDir)) { fs_.mkdirSync(testDir, 0777); }
+  if (!fs_.existsSync(testDir)) { fs_.mkdirSync(testDir, 0777); }
   var path = ng_.getPath(testDir, file)
   fs_.writeFileSync(path, contents.join('\n'), encoding = 'utf8');
 };
@@ -80,7 +79,7 @@ function getDirectory() {
 };
 
 function clearDir(callback) {
-  if (!testDir || !path_.existsSync(testDir)) {
+  if (!testDir || !fs_.existsSync(testDir)) {
     if (callback) callback();
     return
   }

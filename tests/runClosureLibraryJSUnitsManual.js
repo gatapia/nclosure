@@ -12,7 +12,6 @@ goog.require('goog.testing.jsunit');
 goog.require('nclosure.tests');
 
 var fs_ = require('fs');
-var path_ = require('path');
 
 var allTestFiles;
 var tmpdir = ng_.getPath(process.cwd(), 'tests/tmpclosuretests/');
@@ -67,7 +66,7 @@ function copyAndParseAllTestFiles(oncomplete) {
     if (err) return oncomplete(err);
     copyAndParseAllTestFilesImpl(oncomplete)
   };
-  if (path_.existsSync(tmpdir)) {
+  if (fs_.existsSync(tmpdir)) {
     nclosure.tests.rmRfDir(tmpdir, function(err) {
       if (err) return oncomplete(err);
       fs_.mkdir(tmpdir, 0777, impl);

@@ -162,7 +162,7 @@ IO = {
 		if (fileName == null) fileName = FilePath.fileName(inFile);
     inFile = path.normalize(inFile);
     outFile = path.normalize(outDir + "/" + fileName);
-    if (!path.existsSync(inFile)) {
+    if (!fs.existsSync(inFile)) {
       // Could not find file to copy, ignoring: ' + inFile
       // Should we log or safe to ignore?
       return;
